@@ -2,33 +2,44 @@ import React from 'react';
 import { Component } from 'react';
 import Header from "./Header";
 import Meta from './Meta';
-import styled from 'styled-components';
+import styled, { ThemeProvider, injectGlobal } from 'styled-components';
 
 // apply style using javascript styled
-const MyButton = styled.button`
-    background:red;
-    /* can perform all kind of javascript operator, val here is props */
-    font-size: ${val => (val.meduim ? '100px' : '50px')};
-    span {
-        font-size: 200px;
-    };
-`
+const theme = {
+    red: '#FF0000',
+    black: '#393939',
+    grey: '#3A3A3A',
+    lightgrey: '#E1E1E1',
+    offWhite: '#EDEDED',
+    maxWidth: '1000px',
+    bs: '0 12px 24px 0 rgba(0,0,0,0.09)',
+};
 
+
+const StyledPage = styled.div`
+    background: ${props => props.theme.lightgrey};
+    color: ${props => props.theme.black};
+`;
+
+const Inner = styled.div`
+    max-width:${props => props.theme.maxWidth};
+    margin:0 auto;
+    padding: 2rem;
+`;
 
 class Page extends Component {
     render() {
         return (
-            <div>
-                <Meta />
-                <Header />
-                {/* display whatever in the child component */}
-                <MyButton meduim>
-                    {/* can also pass prop meduim */}
-                    click me!
-                    <span>extra</span>
-                </MyButton>
-                {this.props.children}
-            </div>
+            <ThemeProvider theme={theme}>
+                <StyledPage>
+                    <Meta />
+                    <Header />
+                    {/* display whatever in the child component */}
+                    <Inner>
+                        {this.props.children}
+                    </Inner>
+                </StyledPage>
+            </ThemeProvider>
         )
     }
 }
