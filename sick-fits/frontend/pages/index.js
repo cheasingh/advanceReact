@@ -1,12 +1,11 @@
-import Link from "next/link";
+import Items from "../components/Items";
 
 function Home() {
-    return (
-        <div>
-            <p>Home Page</p>
-            
-        </div>
-    );
+  return (
+    <div>
+      <Items />
+    </div>
+  );
 }
 
 export default Home;
