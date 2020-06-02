@@ -31,7 +31,7 @@ const Pagination = (props) => (
           <Link
             prefetch
             href={{
-              pathname: "item",
+              pathname: "items",
               query: { page: page - 1 },
             }}
           >
@@ -46,7 +46,7 @@ const Pagination = (props) => (
           <Link
             prefetch
             href={{
-              pathname: "item",
+              pathname: "items",
               query: { page: page + 1 },
             }}
           >
